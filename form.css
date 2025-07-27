@@ -1,0 +1,21 @@
+strong{
+    color:red;
+}
+span{
+    font-weight: bold;
+}
+h2{
+    color: red;
+    
+}
+.form-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-group label{
+    flex-basis: 100px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+}
