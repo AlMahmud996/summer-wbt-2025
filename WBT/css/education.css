@@ -1,0 +1,58 @@
+h2{
+    font: bold;
+}
+footer{
+    text-align: center;
+}
+li{
+    list-style-type: none;
+    display: inline-block;
+}
+nav{
+    background-color: rgb(68, 68, 68);
+    display: block;
+    text-align: center;
+    
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+    transition: all 0.3s;
+}
+a:hover{
+    color: #0056b3;
+    transform: scale(1.1);
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 40px;
+    background-color: #f4f4f4;
+  }
+ul{
+    padding: 20px;
+}
+.footer-link{
+    color: black;
+}
+.foot{
+    padding-top:12px;
+}
+.edu_section {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 1s;
+  }
+.edu_section:hover{
+    transform: scale(1.1);
+}
