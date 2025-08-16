@@ -4,23 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            border: 1px solid #111;
+            width: 400px;
+            justify-content: center;
+            border-radius: 10px;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
     <h2>Registration Summary</h2>
     <div id="summary"></div>
-    
-    <script>
-        document.getElementById("summary").innerHTML = `
-            <p><b>First Name:</b> ${sessionStorage.getItem("firstname")}</p>
-            <p><b>Last Name:</b> ${sessionStorage.getItem("lastname")}</p>
-            <p><b>Email:</b> ${sessionStorage.getItem("email")}</p>
-            <p><b>Birthday:</b> ${sessionStorage.getItem("birthday")}</p>
-            <p><b>Gender:</b> ${sessionStorage.getItem("gender")}</p>
-            <p><b>Reason for Contact:</b> ${sessionStorage.getItem("reason")}</p>
-            <p><b>Position:</b> ${sessionStorage.getItem("position")}</p>
-            <p><b>Phone:</b> ${sessionStorage.getItem("phone")}</p>
-            <p><b>Username:</b> ${sessionStorage.getItem("username")}</p>
-            <p><b>Password:</b> ${sessionStorage.getItem("password")}</p>`;
-    </script>
+    <div class="summeryjs">
+        <script>
+            document.getElementById("summary").innerHTML = `
+                <p><b>First Name:</b> ${sessionStorage.getItem("firstname")}</p>
+                <p><b>Last Name:</b> ${sessionStorage.getItem("lastname")}</p>
+                <p><b>Email:</b> ${sessionStorage.getItem("email")}</p>
+                <p><b>Birthday:</b> ${sessionStorage.getItem("birthday")}</p>
+                <p><b>Gender:</b> ${sessionStorage.getItem("gender")}</p>
+                <p><b>Reason for Contact:</b> ${sessionStorage.getItem("reason")}</p>
+                <p><b>Position:</b> ${sessionStorage.getItem("position")}</p>
+                <p><b>Phone:</b> ${sessionStorage.getItem("phone")}</p>
+                <p><b>Username:</b> ${sessionStorage.getItem("username")}</p>
+                <p><b>Password:</b> ${sessionStorage.getItem("password")}</p>`;
+        </script>
+    </div>
+   
 </body>
 </html>
