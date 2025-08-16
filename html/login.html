@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Create Username & Password</h2>
+    <form id="step2Form">
+        Username: <input type="text" id="username" required><br><br>
+        Password: <input type="password" id="password" required><br><br>
+        <button type="submit">Finish</button>
+    </form>
+
+    <script>
+    document.getElementById("step2Form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        sessionStorage.setItem("username", document.getElementById("username").value);
+        sessionStorage.setItem("password", document.getElementById("password").value);
+
+        window.location.href = "../html/show_details.html";
+    });
+    </script>
+</body>
+</html>
