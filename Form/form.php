@@ -113,13 +113,13 @@
             <div class="form-group">
                 <label for="address">Address 1 <strong>*</strong></label>
                 <input type="text" id="address 1" name="add1">
-                <span class="error"> <?php echo $companyErr;?></span>
+                <span class="error"> <?php echo $add1Err;?></span>
                 <br><br>
             </div>
             <div class="form-group">
                 <label for="address">Address 2</label>
                 <input type="text" id="address 2" name="add2">
-                <span class="error"> <?php echo $companyErr;?></span>
+                <span class="error"> <?php echo $add2Err;?></span>
                 <br><br>
             </div>
             <div class="form-group">
