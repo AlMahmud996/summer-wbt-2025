@@ -37,6 +37,7 @@ input[type="reset"],[type="submit"]{
     margin: 3px;
     margin-top: 0px;
     cursor: pointer;
+    color: blueviolet;
 }
 a{
     color: rgb(153, 152, 152);

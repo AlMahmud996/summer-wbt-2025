@@ -6,9 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donor Form</title>
     <link rel="stylesheet" href="form.css">
+    <style>
+        .error {color: #FF0000;}
+    </style>
 </head>
 
 <body>
+    <?php
+    $fnameErr = $lnameErr = $companyErr = $add1Err = $add2Err = "";
+    $name = $email = $gender = "";
+
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (empty($_POST["fname"])) {
+            $fnameErr = "First Name is required";
+        } else {
+            $fname = htmlSpecialChars()($_POST["fname"]);
+            if(!preg_match("^[a-zA-Z-' ]*$/", $fname)){
+                $fnameErr = "Only letters and spaces allowed";
+            }elseif(strlen($fname) < 2){
+                $fnameErr = "First name must be at least 2 character";
+            }
+        }
+    
+        if (empty($_POST["lname"])) {
+            $lnameErr = "Last Name is required";
+        } else {
+            $lname = htmlSpecialChars()($_POST["fname"]);
+            if(!preg_match("^[a-zA-Z-' ]*$/", $lname)){
+                $lnameErr = "Only letters and spaces allowed";
+            }elseif(strlen($lname) < 2){
+                $lnameErr = "First name must be at least 2 character";
+            }
+        }
+    
+        if (empty($_POST["company"])) {
+            $companyErr = "Company Name is required";
+        } else {
+            $company = test_input($_POST["company"]);
+        }
+        
+        if (empty($_POST["add1"])) {
+            $website = "";
+        } else {
+            $website = test_input($_POST["add1"]);
+        }
+        
+        if (empty($_POST["add2"])) {
+            $comment = "";
+        } else {
+            $comment = test_input($_POST["add2"]);
+        }
+        
+        if (empty($_POST["gender"])) {
+            $genderErr = "Gender is required";
+        } else {
+            $gender = test_input($_POST["gender"]);
+        }
+        if (!empty($_POST["phone"])) {
+            $phone = test_input($_POST["phone"]);
+            if (!preg_match("/^[0-9]{7,15}$/", $phone)) {
+                $phoneErr = "Invalid phone number";
+            }
+        }
+        }
+    
+        function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+    ?>
+
     <div class="full-form">
         <div>
             <h5><strong>*</strong>- Denotes Required Information</h5>
@@ -19,30 +89,42 @@
             </ul>
         </div>
         <h2>Donor Information</h2>
-        <form method="GET">
+
+        <form method="POST" action= "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="form-group">
                 <label for="name">First Name <strong>*</strong></label>
-                <input type="text" id="name">
+                <input type="text" id="name" name="fname" value= "<?php echo $fname;?>">
+                <span class="error"> * <?php echo $fnameErr;?></span>
+                <br><br>
+                
             </div>
             <div class="form-group">
                 <label for="name">Last Name <strong>*</strong></label>
-                <input type="text" id="name">
+                <input type="text" id="name" name="lname">
+                <span class="error"> * <?php echo $lnameErr;?></span>
+                <br><br>
             </div>
             <div class="form-group">
                 <label for="company">Company</label>
-                <input type="text" id="company">
+                <input type="text" id="company" name="company">
+                <span class="error"> <?php echo $companyErr;?></span>
+                <br><br>
             </div>
             <div class="form-group">
                 <label for="address">Address 1 <strong>*</strong></label>
-                <input type="text" id="address 1">
+                <input type="text" id="address 1" name="add1">
+                <span class="error"> <?php echo $companyErr;?></span>
+                <br><br>
             </div>
             <div class="form-group">
                 <label for="address">Address 2</label>
-                <input type="text" id="address 2">
+                <input type="text" id="address 2" name="add2">
+                <span class="error"> <?php echo $companyErr;?></span>
+                <br><br>
             </div>
             <div class="form-group">
                 <label for="city">City <strong>*</strong></label>
-                <input type="text" id="city">
+                <input type="text" id="city" name="city">
             </div>
             <div class="form-group">
                 <label for="state">State <strong>*</strong></label>
@@ -103,8 +185,9 @@
                 Monthly Credit Card $<input type="text" id=""> For <input type="text" id="">
             </div>
         </form>
+
         <h2>Honorarium and Memorial Donation Information</h2>
-        <form method="GET">
+        <form method="POST">
             <div class="form-group">
                 <label for="amount">I would like to make this <br>donation</label>
                 <input type="checkbox" name="">To Honor
@@ -178,7 +261,7 @@
         <hr>
         <div class="form-group">
             <input type="reset" value="Reset">
-            <input type="submit" value="Continue">
+            <input type="submit" name="submit" value="Continue">
         </div>
         <h4>Donate online with confidence. You are on secure server.</h4>
         <h4>If you have any problems or question, please contact <a href="">support.</a></h4>

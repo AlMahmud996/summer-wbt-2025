@@ -7,6 +7,23 @@
     <link rel="stylesheet" type="text/css" href="../css/contact_me.css">
 </head>
 <body>
+    <?php
+        $firstname = $lastname = $email = $phone = "";
+        $firstnameErr = $lastnameErr = $emailErr = $phoneErr = "";
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
+            if(empty($_POST["firstname"])){
+                $firstnameErr = "First Name is Required";
+            } else{
+                $firstname = htmlSpecialChars()($_POST["firstname"]);
+            if(!preg_match("^[a-zA-Z-' ]*$/", $firstname)){
+                $firstnameErr = "Only letters and spaces allowed";
+            }elseif(strlen($firstname) < 2){
+                $firstnameErr = "First name must be at least 2 character";
+            }
+        }
+    }
+    ?>
+
     <header>
         <nav>
             <ul>
@@ -19,7 +36,7 @@
         </nav>
     </header>
     <h3>Fill Up the form for contacting me!</h3>
-    <form method="GET">
+    <form method="POST">
         First Name: <input type="text" name="firstname"> <br>
         Last Name: <input type="text" name="lastname"> <br>
         Email: <br><input type="email" required> <br>
