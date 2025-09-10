@@ -14,17 +14,17 @@
 <body>
     <?php
     $fnameErr = $lnameErr = $companyErr = $add1Err = $add2Err = "";
-    $name = $email = $gender = "";
+    $fname = $lname = $comnay = "";
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["fname"])) {
             $fnameErr = "First Name is required";
         } else {
-            $fname = htmlSpecialChars()($_POST["fname"]);
-            if(!preg_match("^[a-zA-Z-' ]*$/", $fname)){
+            $fname = test_input($_POST["fname"]);
+            if(!preg_match("/^[a-zA-Z-' ]*$/", $fname)){
                 $fnameErr = "Only letters and spaces allowed";
-            }elseif(strlen($fname) < 2){
+            }else if(strlen($fname) < 2){
                 $fnameErr = "First name must be at least 2 character";
             }
         }
@@ -35,7 +35,7 @@
             $lname = htmlSpecialChars()($_POST["fname"]);
             if(!preg_match("^[a-zA-Z-' ]*$/", $lname)){
                 $lnameErr = "Only letters and spaces allowed";
-            }elseif(strlen($lname) < 2){
+            }else if(strlen($lname) < 2){
                 $lnameErr = "First name must be at least 2 character";
             }
         }
@@ -65,7 +65,7 @@
         }
         if (!empty($_POST["phone"])) {
             $phone = test_input($_POST["phone"]);
-            if (!preg_match("/^[0-9]{7,15}$/", $phone)) {
+            if (!preg_match("^[0-9]{7,15}$/", $phone)) {
                 $phoneErr = "Invalid phone number";
             }
         }
@@ -94,7 +94,7 @@
             <div class="form-group">
                 <label for="name">First Name <strong>*</strong></label>
                 <input type="text" id="name" name="fname" value= "<?php echo $fname;?>">
-                <span class="error"> * <?php echo $fnameErr;?></span>
+                <span class="error"> * "<?php echo $fnameErr;?>"</span>
                 <br><br>
                 
             </div>

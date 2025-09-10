@@ -1,0 +1,30 @@
+* {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar a:hover {
+    color: violet;
+    font-size: 16px;
+}
+
+.atag {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    margin-bottom: 600px;
+}
